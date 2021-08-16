@@ -5,11 +5,11 @@ version: "3"
 # it through port 9000.
 services:
   minio1:
-    image: minio/minio:RELEASE.2021-08-05T22-01-19Z
-    command: server --console-address ":9008" http://minio{1...2}/data{1...2}
+    image: minio/minio
+    command: server --console-address ":9001" http://minio{1...2}/data{1...2}
     expose:
-      - "9007"
-      - "9008"
+      - "9000"
+      - "9001"
     env_file:
       - ./minio.env
     healthcheck:
@@ -23,11 +23,11 @@ services:
       - ./data/data1-2:/data2
 
   minio2:
-    image: minio/minio:RELEASE.2021-08-05T22-01-19Z
-    command: server --console-address ":9008" http://minio{1...2}/data{1...2}
+    image: minio/minio
+    command: server --console-address ":9001" http://minio{1...2}/data{1...2}
     expose:
-      - "9007"
-      - "9008"
+      - "9000"
+      - "9001"
     env_file:
       - ./minio.env
     healthcheck:
